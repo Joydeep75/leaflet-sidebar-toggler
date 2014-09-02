@@ -14,8 +14,12 @@ L.Control.SidebarToggler = L.Control.extend({
 
     onAdd: function (map) {
         var container = L.DomUtil.create('div', 'leaflet-control-sidebarToggler leaflet-bar leaflet-control');
+        if (this.options.class) {
+            this.link = L.DomUtil.create('a', 'leaflet-control-sidebarToggler-button leaflet-bar-part ' + this.options.class, container);
+        } else {
+            this.link = L.DomUtil.create('a', 'leaflet-control-sidebarToggler-button leaflet-bar-part', container);
+        }
 
-        this.link = L.DomUtil.create('a', 'leaflet-control-sidebarToggler-button leaflet-bar-part', container);
         this.link.href = '#';
 
         this._map = map;
